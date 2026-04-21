@@ -1,0 +1,8 @@
+#逻辑与2的幂相同，先将小于等于0的情况判为False，再找正数中符合规则的
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
+        if n <= 0:
+            return False
+        while n%3 == 0:
+            n = n//3
+        return n==1
