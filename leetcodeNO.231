@@ -1,0 +1,21 @@
+#我的写法
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        if n <= 0:
+            result = False
+        while n >= 1:
+            if n == 1:
+                result = True
+            else:
+                result = False    
+            n = n/2
+            
+        return result
+ #kimi的写法
+ class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        if n <= 0:
+            return False
+        while n % 2 == 0: #对于2的整数幂的判断上更高效：首先能整除2进入循环，然后除二取模，这里相当于（n = n/2), 最后返回Ture，直接以最后一次跳出循环的n值与一比较，当n跳出whlie循环时值应该为1，即比较了结果是否正确，也返回了目标Ture
+            n = n // 2
+        return n == 1  
