@@ -1,0 +1,11 @@
+#,转置就是要把原本的行变成转置矩阵的列，把原本的列变成转置矩阵的行，由于矩阵用列表的表示出来的方式是一行一行的小列表表示矩阵的每一列，那么我们一定是要先遍历源列表的第一列，放入转置列表才是转置列表的第一行，
+所以俩层循环，先遍历原列表的列在遍历原列表的行，创建一个中间列表用来存贮，转置列表的每一行代表的小列表，然后赋值给转置列表
+class Solution:
+    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+        zzq = []
+        for col in range(len(matrix[0])):
+            steplist = []
+            for row in range(len(matrix)):
+                steplist.append(matrix[row][col])
+            zzq.append(steplist)    
+        return zzq
