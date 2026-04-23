@@ -1,0 +1,8 @@
+#通过循环遍历，每次把i和i+n的下标的nums的序号的元素导入结果数组，遍历n次就完成。 定义空列表的语法是 变量名 = [] ; 返回列表时直接return 变量名； for 循环记得加range
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        zzq = []
+        for i in range(0, n):
+            zzq.append(nums[i])
+            zzq.append(nums[i+n])
+        return zzq
