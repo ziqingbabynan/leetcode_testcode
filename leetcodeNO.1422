@@ -1,0 +1,17 @@
+class Solution:
+    def maxScore(self, s: str) -> int:
+        total_ones = 0     #先遍历查找整个字符串中1的个数
+        for i in range(len(s)):   
+            if s[i] == '1':
+                total_ones += 1
+
+        maxScore = 0       #初始化最大得分
+        left_zeros = 0     #初始化每个断电处左边0的个数。          #这里要强调一下，断点在直接理解上指的是俩点之间的，一分为二的地方，在这里，断点是这个地方的左边的点，举个例子，010010的前俩个字符之间01的断点应该介于0与1之间，但是在这里我们就把断点设置在0上，也相当于设置在了分割后左边字符串的最后一个字符上
+        for i in range(len(s)-1):   #这里的range的范围就是断点的范围，（0，lem(s)-1)，即0到len(s)-2,因为如果是(0,len(s))，即0到len(s)-1，这个断点就到了字符串的最后一位上，不符合题目中，分割为俩个非空字符串的要求，所以最后一个断点必须是字符串倒数第二个字符。
+            if s[i] == '0':       #断点的字符为0则左边0的个数加一，为1则1的总数减一，相当于把右边的1挪到了左边，这里的1的总数也就可以理解为‘右边1的个数'
+                left_zeros += 1
+            else:
+                total_ones -= 1
+            Score = left_zeros + total_ones      #每个断点处都计算一遍得分，然后与临时最高分比较得出新的临时最高分
+            maxScore = max(Score, maxScore)
+        return maxScore  #返回最终的最高分
