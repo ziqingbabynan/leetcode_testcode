@@ -1,0 +1,9 @@
+class Solution:
+    def vowelStrings(self, words: List[str], left: int, right: int) -> int:
+        yuanyin = ["a", "e", "i", "o", "u"]             #先定义元音列表
+        count = 0                                       #初始化元音数组数
+        for i in range(left, right+1):                  #根据题意，要在words的[left,right]里遍历，故range的右端要为right+1
+            word = words[i]                             #将遍历到的字符串赋给临时列表
+            if word[0] in yuanyin and word[-1] in yuanyin:  #用in查找word里的首尾字符是否在元音列表中，这里有俩个点，一，是in，就是看in左边的在不在in右边里。二，是word[-1],含义是word的倒数第一字符。
+                count +=1
+        return count        
