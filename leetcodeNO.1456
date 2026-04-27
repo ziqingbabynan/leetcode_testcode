@@ -1,0 +1,13 @@
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+        ans = vowel = 0     #ans是最终答案 vowel是临时最大值
+        for i,c in enumerate(s):    #enumerate（）遍历时同时给出索引{i}，值{c}的遍历方式，完整形式时enumerate（iterable， start）前面是要遍历的字符串，后面是初始索引值，但是不论初始索引值是多少
+            if c in "aeiou":        #都会从字符串的第一个字符开始遍历完全部字符，影响的是遍历的第i个字符和s[i]对应不上，例如enumerate（s，1）其中s为‘abcde',那么第一个遍历的字符依然是a，对应i值为1，但是却s[1]=b
+                vowel += 1          #检查右端点c是否是元音字母，这里需要注意的是c一定是右端点。
+            left = i - k + 1        #左端点的表达式
+            if left < 0:            #如果左端点left的下表小于零说明，目前还没有构成一个完整的滑动窗口，只有当left等于0式，第一个滑动窗口才出现
+                continue
+            ans = max(ans, vowel)   #比较每一次的元音数，将最大值赋给最终答案
+            if s[left] in 'aeiou':  #如果左端点的值也是元音，就要在退出时给临时最大值减一。
+                vowel -= 1
+        return ans
